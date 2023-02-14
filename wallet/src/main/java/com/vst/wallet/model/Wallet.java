@@ -18,9 +18,6 @@ import lombok.Setter;
 @Document(collection = "wallet")
 public class Wallet {
 
-	@Transient
-	public static final String SEQUENCE_NAME = "wallet"; // for generating the id
-
 	@Id
 	private String walletId;
 	private String walletAmount;
@@ -33,6 +30,6 @@ public class Wallet {
 	private String modifiedDate;
 	private String createdBy;
 	private String modifiedBy;
-	boolean isActive = true;
+	boolean isActive;
 
 }

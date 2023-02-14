@@ -15,9 +15,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class WalletDTO {
+public class WalletDto {
 	@Transient
-	public static final String SEQUENCE_NAME = "wallet"; // for generating the id
+	public static final String SEQUENCE_NAME = "wallet_sequnce"; // for generating the id
 
 	@Id
 	private String walletId;
@@ -41,6 +41,6 @@ public class WalletDTO {
 	private String createdBy;
 	@NotNull
 	private String modifiedBy;
-	boolean isActive = true;
+	boolean isActive ;
 
 }

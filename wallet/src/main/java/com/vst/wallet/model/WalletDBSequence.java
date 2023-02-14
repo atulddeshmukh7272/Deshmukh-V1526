@@ -7,11 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "database_sequences")
+@Document(collection = "db_sequences")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DataBaseSequence {
+public class WalletDBSequence {
 
 	@Id
 	private String id;

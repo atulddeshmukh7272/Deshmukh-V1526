@@ -11,8 +11,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import com.vst.wallet.dto.WalletDTO;
-import com.vst.wallet.model.DataBaseSequence;
+import com.vst.wallet.dto.WalletDto;
+import com.vst.wallet.model.WalletDBSequence;
 
 @Service
 public class SequenceGeneratorService {
@@ -23,17 +23,15 @@ public class SequenceGeneratorService {
 	public int getSequenceNumber(String seqName) {
 		Query query = new Query(Criteria.where("id").is(seqName)); // update the sequence number
 		Update update = new Update().inc("seq", 1); // update in the in document
-		DataBaseSequence counter = mongoOperations.findAndModify(query, update, options().returnNew(true).upsert(true),
-				DataBaseSequence.class);
+		WalletDBSequence counter = mongoOperations.findAndModify(query, update, options().returnNew(true).upsert(true),
+				WalletDBSequence.class);
 		return !Objects.isNull(counter) ? counter.getSeq() : 1;
 	}
 
 	public String idGenerator() {
 		Date dNow = new Date();
-		SimpleDateFormat dateFormate = new SimpleDateFormat("MMDDYY_HHmmss");
-		String datetime = dateFormate.format(dNow);
-		return datetime + "_" + getSequenceNumber(WalletDTO.SEQUENCE_NAME);
-	
+		SimpleDateFormat dateFormate = new SimpleDateFormat("ddMMyyyy_hhmmss" + "");
+		return dateFormate.format(dNow)+ "_" + getSequenceNumber(WalletDto.SEQUENCE_NAME);
 	}
 
 }
