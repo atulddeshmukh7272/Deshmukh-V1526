@@ -1,5 +1,7 @@
 package com.vst.wallet.dto;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 
@@ -31,8 +33,8 @@ public class WalletDto {
 	private String walletType;
 	@NotNull
 	private String walletPaymentType;
-	@NotNull
-	private String[] walletHistory;
+
+	private List<String> walletHistory;
 	@NotNull
 	private String createDate;
 	@NotNull

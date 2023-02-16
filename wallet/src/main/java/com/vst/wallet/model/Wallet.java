@@ -1,7 +1,9 @@
 package com.vst.wallet.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -25,7 +27,7 @@ public class Wallet {
 	private String walletStatus;
 	private String walletType;
 	private String walletPaymentType;
-	private String[] walletHistory;
+	private List<String> walletHistory;
 	private String createDate;
 	private String modifiedDate;
 	private String createdBy;

@@ -1,7 +1,6 @@
-package com.vst.wallet.exception;
+package com.vst.wallet.error;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import org.springframework.http.HttpStatus;
 
@@ -14,12 +13,12 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class WalletErrorMessage {
-	
-	private LocalDateTime timeStamp;
-	private HttpStatus status;
+@NoArgsConstructor
+public class WalletErrorResponse {
 	private String message;
+	private HttpStatus status;
+	private String statusCode;
+	private LocalDateTime timeStamp;
 
 }
