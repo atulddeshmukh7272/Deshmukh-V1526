@@ -16,6 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class WalletErrorResponse {
+	
 	private String message;
 	private HttpStatus status;
 	private String statusCode;

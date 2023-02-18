@@ -33,14 +33,14 @@ public class WalletServiceImpl implements WalletServiceInterface {
 		walletDto.setActive(true);
 		Wallet wallet = walletConverter.dtoToEntity(walletDto);
 		walletRepository.save(wallet);
-		return "charger save successfully";
+		return "wallet save successfully";
 
 	}
 
 //for showing wallet Info
 	@Override
 	public Wallet show(String walletId) {
-		if (!walletId.trim().isEmpty()) {
+		if (!walletId.isBlank()) {
 
 			Wallet wallet = walletRepository.findByWalletIdAndIsActiveTrue(walletId);
 			if (wallet != null) {
@@ -67,34 +67,45 @@ public class WalletServiceImpl implements WalletServiceInterface {
 //for updating the wallet Info
 	@Override
 	public void edit(String walletId, WalletDto walletDto) {
-		if (!walletId.trim().isEmpty()) {
+		if (!walletId.isBlank()) {
 
 			Wallet wallet = walletConverter.dtoToEntity(walletDto);
 			Wallet obj = walletRepository.findByWalletIdAndIsActiveTrue(walletId);
 			if (obj != null) {
-				if (!wallet.getWalletAmount().trim().isEmpty())
+				if (wallet.getWalletAmount()!=null)
+				if (!wallet.getWalletAmount().isBlank())
 					obj.setWalletAmount(wallet.getWalletAmount());
 
-				if (wallet.getWalletCurrency() != null)
+				if (wallet.getWalletCurrency()!=null)
+					if (!wallet.getWalletCurrency().isBlank())
 					obj.setWalletCurrency(wallet.getWalletCurrency());
 
-				if (wallet.getWalletStatus() != null)
+				if (wallet.getWalletStatus()!=null)
+					if (!wallet.getWalletStatus().isBlank())
 					obj.setWalletStatus(wallet.getWalletStatus());
 
-				if (wallet.getWalletType() != null)
+				if (wallet.getWalletType()!=null)
+					if (!wallet.getWalletType().isBlank())
 					obj.setWalletType(wallet.getWalletType());
 
-				if (wallet.getWalletPaymentType() != null)
+				if (wallet.getWalletPaymentType()!=null)
+					if (!wallet.getWalletPaymentType().isBlank())
 					obj.setWalletPaymentType(wallet.getWalletPaymentType());
-				if (wallet.getWalletHistory() != null)
+				
+				if (wallet.getWalletHistory()!=null)
+					if (wallet.getWalletHistory().isBlank())
 					obj.setWalletHistory(wallet.getWalletHistory());
-				if (wallet.getCreateDate() != null)
+				
+				if (!wallet.getCreateDate().isBlank())
 					obj.setCreateDate(wallet.getCreateDate());
-				if (wallet.getModifiedDate() != null)
+				
+				if (!wallet.getModifiedDate().isBlank())
 					obj.setModifiedDate(wallet.getModifiedDate());
-				if (wallet.getCreatedBy() != null)
+				
+				if (!wallet.getCreatedBy().isBlank())
 					obj.setCreatedBy(wallet.getCreatedBy());
-				if (wallet.getModifiedBy() != null)
+				
+				if (!wallet.getModifiedBy().isBlank())
 					obj.setModifiedBy(wallet.getModifiedBy());
 				walletRepository.save(obj);
 
@@ -120,7 +131,7 @@ public class WalletServiceImpl implements WalletServiceInterface {
 				throw new WalletNotFoundException("Wallet Is Not Found");
 			}
 		} else {
-			throw new IdNotAcceptableException("");
+			throw new IdNotAcceptableException("Given Wallet Id Is Not Found");
 		}
 	}
 }

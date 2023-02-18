@@ -11,10 +11,10 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Data
-@Getter
-@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "wallet")
@@ -27,7 +27,7 @@ public class Wallet {
 	private String walletStatus;
 	private String walletType;
 	private String walletPaymentType;
-	private List<String> walletHistory;
+	private String walletHistory;
 	private String createDate;
 	private String modifiedDate;
 	private String createdBy;

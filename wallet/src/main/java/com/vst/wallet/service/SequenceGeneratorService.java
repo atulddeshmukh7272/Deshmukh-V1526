@@ -1,5 +1,6 @@
 package com.vst.wallet.service;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -30,8 +31,10 @@ public class SequenceGeneratorService {
 
 	public String idGenerator() {
 		Date dNow = new Date();
-		SimpleDateFormat dateFormate = new SimpleDateFormat("ddMMyyyy_hhmmss" + "");
+		SimpleDateFormat dateFormate = new SimpleDateFormat("ddMMyyyy-hhmm" + "-");
 		return dateFormate.format(dNow)+ "_" + getSequenceNumber(WalletDto.SEQUENCE_NAME);
+		
+		
 	}
 
 }

@@ -1,47 +1,50 @@
 package com.vst.wallet.dto;
 
-import java.util.List;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 
-import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class WalletDto {
 	@Transient
 	public static final String SEQUENCE_NAME = "wallet_sequnce"; // for generating the id
 
 	@Id
 	private String walletId;
-	@NotNull
+	@NotBlank@NotNull(message="Wallet balance must be provided")
 	private String walletAmount;
-	@NotNull
+	@NotBlank@NotNull(message="Wallet currency must be provided")
 	private String walletCurrency;
-	@NotNull
+	@NotBlank@NotNull
 	private String walletStatus;
-	@NotNull
+	@NotBlank@NotNull
 	private String walletType;
-	@NotNull
+	@NotBlank@NotNull
 	private String walletPaymentType;
-
-	private List<String> walletHistory;
-	@NotNull
+    @NotBlank@NotNull
+	private String walletHistory;
+	@NotBlank@NotNull
 	private String createDate;
-	@NotNull
+	@NotBlank@NotNull
 	private String modifiedDate;
-	@NotNull
+	@NotBlank@NotNull
 	private String createdBy;
-	@NotNull
+	@NotBlank@NotNull
 	private String modifiedBy;
 	boolean isActive ;
 

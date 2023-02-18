@@ -3,6 +3,7 @@ package com.vst.wallet.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,10 +21,13 @@ import com.vst.wallet.model.Wallet;
 import com.vst.wallet.service.SequenceGeneratorService;
 import com.vst.wallet.service.WalletServiceImpl;
 
-import jakarta.validation.Valid;
+
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/vst1")
 public class WalletController {
@@ -51,13 +55,15 @@ public class WalletController {
 		return ResponseEntity.ok(walletServiceImpl.show(walletId));
 	}
 
-	@GetMapping("/wallet/getall")
+//for getting all record
+	@GetMapping("/wallets")
 	public ResponseEntity<List<Wallet>> getAllWallet() {
 		return ResponseEntity.ok(walletServiceImpl.showAll());
 
 	}
 
-	@PutMapping("wallet")
+//for updating record
+	@PutMapping("/wallet")
 	public ResponseEntity<String> updateWallet(@RequestParam("walletId") String walletId,
 			@RequestBody WalletDto walletDto) {
 		walletServiceImpl.edit(walletId, walletDto);
@@ -65,11 +71,13 @@ public class WalletController {
 
 	}
 
-	@DeleteMapping
+//for deleting record
+	@DeleteMapping("/wallet")
 	public ResponseEntity<String> deleteWallet(@RequestParam("walletId") String walletId) {
 
 		walletServiceImpl.remove(walletId);
 		return new ResponseEntity<>("wallet Deleted", HttpStatus.OK);
 
 	}
+
 }
