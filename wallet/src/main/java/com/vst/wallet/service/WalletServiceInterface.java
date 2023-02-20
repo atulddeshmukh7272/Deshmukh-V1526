@@ -16,5 +16,8 @@ public interface WalletServiceInterface {
 	public void edit(String walletId, WalletDto walletDto);// for update wallet
 
 	public void remove(String wallet);
+	
+	public List<Wallet> showWalletStatus(String walletStatus);
+	public List<Wallet> showWalletPaymentType(String walletPaymentType);
 
 }

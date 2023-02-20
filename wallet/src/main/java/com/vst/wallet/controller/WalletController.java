@@ -77,7 +77,18 @@ public class WalletController {
 		return new ResponseEntity<>("wallet Deleted", HttpStatus.OK);
 
 	}
-//for getting wallet using userId
-//	public ResponseEntity<Wallet> getByWallet
 
+//for getting wallet using walletstatus
+	@GetMapping("/walletstatus")
+	public ResponseEntity<List<Wallet>> getByWalletStatus(@RequestParam("walletStatus") String walletStatus) {
+		return ResponseEntity.ok(walletServiceImpl.showWalletStatus(walletStatus));
+
+	}
+
+	// for getting wallet using wallet payment type
+	@GetMapping("/walletpaymenttype")
+	public ResponseEntity<List<Wallet>> getByWalletPaymentType(@RequestParam("walletPaymentType") String walletPaymentType) {
+		return ResponseEntity.ok(walletServiceImpl.showWalletPaymentType(walletPaymentType));
+
+	}
 }

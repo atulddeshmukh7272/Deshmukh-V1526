@@ -11,4 +11,8 @@ public interface WalletRepository extends MongoRepository<Wallet, String> {
 
 	List<Wallet> findAllByAndIsActiveTrue();
 
+	List<Wallet> findAllByWalletStatusAndIsActiveTrue(String walletStatus);
+
+	List<Wallet> findAllByWalletPaymentTypeAndIsActiveTrue(String walletPaymentType);
+
 }

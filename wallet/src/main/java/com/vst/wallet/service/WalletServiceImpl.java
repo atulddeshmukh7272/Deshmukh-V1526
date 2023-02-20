@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.vst.wallet.controller.WalletController;
 import com.vst.wallet.converter.WalletConverter;
 import com.vst.wallet.dto.WalletDto;
 import com.vst.wallet.exception.IdNotAcceptableException;
@@ -147,6 +146,43 @@ public class WalletServiceImpl implements WalletServiceInterface {
 		} else {
 			logger.info("Called WalletServiceImpl.remove");
 			throw new IdNotAcceptableException("Given Wallet Id Is Not Found");
+		}
+	}
+
+	@Override
+	public List<Wallet> showWalletStatus(String walletStatus) {
+		if (!walletStatus.trim().isEmpty()){
+
+			List<Wallet> wallet = walletRepository.findAllByWalletStatusAndIsActiveTrue(walletStatus);
+			if (!wallet.isEmpty()){ 
+
+				return wallet;
+			} else {
+				logger.info("Called WalletServiceImpl.showWalletStatus");
+				throw new WalletNotFoundException("Given Wallet Status Is  Not Available");
+			}
+		} else {
+			logger.info("Called WalletServiceImpl.showWalletStatus");
+			throw new IdNotAcceptableException("Please Enter Correct Id");
+		}
+	}
+
+	@Override
+	public List<Wallet> showWalletPaymentType(String walletPaymentType) {
+		
+		if (!walletPaymentType.trim().isEmpty()){
+
+			List<Wallet> wallet = walletRepository.findAllByWalletPaymentTypeAndIsActiveTrue(walletPaymentType);
+			if (!wallet.isEmpty()){ 
+
+				return wallet;
+			} else {
+				logger.info("Called WalletServiceImpl.showWalletPaymentType");
+				throw new WalletNotFoundException("Given walletPaymentType Not Available");
+			}
+		} else {
+			logger.info("Called WalletServiceImpl.showWalletPaymentType");
+			throw new IdNotAcceptableException("Please Enter Correct Id");
 		}
 	}
 }
