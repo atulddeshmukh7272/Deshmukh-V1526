@@ -13,11 +13,14 @@ public class WalletMongoIndex {
 	 @Autowired
 	    private MongoTemplate mongoTemplate;
 
-	    @PostConstruct
-	    public void initIndexes() {
-	        IndexOperations indexOps = mongoTemplate.indexOps(User.class);
-	        indexOps.ensureIndex(new Index().on("email", Direction.ASC).unique());
-	    }
+//	    @PostConstruct
+//	    public void Indexes() {
+//	        IndexOperations indexOps = mongoTemplate.indexOps(User.class);
+//	        indexOps.ensureIndex(new Index().on("", Direction.ASC).unique());
+//	    }
+	 
+	 
+	 
 	}
 
 

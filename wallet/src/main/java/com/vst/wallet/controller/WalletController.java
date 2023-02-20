@@ -21,8 +21,6 @@ import com.vst.wallet.model.Wallet;
 import com.vst.wallet.service.SequenceGeneratorService;
 import com.vst.wallet.service.WalletServiceImpl;
 
-
-
 import java.util.List;
 
 import javax.validation.Valid;
@@ -79,5 +77,7 @@ public class WalletController {
 		return new ResponseEntity<>("wallet Deleted", HttpStatus.OK);
 
 	}
+//for getting wallet using userId
+//	public ResponseEntity<Wallet> getByWallet
 
 }

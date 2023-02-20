@@ -26,25 +26,35 @@ public class WalletDto {
 
 	@Id
 	private String walletId;
-	@NotBlank@NotNull(message="Wallet balance must be provided")
+	@NotNull(message="Wallet balance must be provided")
+	@NotBlank
 	private String walletAmount;
-	@NotBlank@NotNull(message="Wallet currency must be provided")
+	@NotNull(message="Wallet currency must be provided")
+	@NotBlank
 	private String walletCurrency;
-	@NotBlank@NotNull
+	@NotNull
+	@NotBlank
 	private String walletStatus;
-	@NotBlank@NotNull
+	@NotNull
+	@NotBlank
 	private String walletType;
-	@NotBlank@NotNull
+	@NotNull
+	@NotBlank
 	private String walletPaymentType;
-    @NotBlank@NotNull
+	@NotNull
+    @NotBlank
 	private String walletHistory;
-	@NotBlank@NotNull
+    @NotNull
+	@NotBlank
 	private String createDate;
-	@NotBlank@NotNull
+	@NotNull
+	@NotBlank
 	private String modifiedDate;
-	@NotBlank@NotNull
+	@NotNull
+	@NotBlank
 	private String createdBy;
-	@NotBlank@NotNull
+	@NotNull
+	@NotBlank
 	private String modifiedBy;
 	boolean isActive ;
 
